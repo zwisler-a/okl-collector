@@ -9,11 +9,11 @@ let sleep_time = 60;
 module.exports = {
     getConfig: () => ({s: sleep_time}),
     addData: (espName, value) => {
-        if (!data[name]) {
-            data[name] = [];
+        if (!data[espName]) {
+            data[espName] = [];
         }
 
-        data[name].push({
+        data[espName].push({
             t: new Date().getTime(),
             v: value
         })
