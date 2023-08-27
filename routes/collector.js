@@ -19,4 +19,16 @@ router.get('/data', function (req, res, next) {
     res.send(esp.getData());
 });
 
+router.get('/config', function (req, res, next) {
+    res.send(esp.getConfig());
+});
+
+router.post('/config', function (req, res, next) {
+    const newTime = req.body?.sleepTime;
+    if (newTime) {
+        esp.setSleepTime(newTime);
+    }
+    res.send(esp.getConfig());
+});
+
 module.exports = router;
