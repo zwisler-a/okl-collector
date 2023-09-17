@@ -22,7 +22,7 @@ router.get('/data', function (req, res, next) {
 
 router.get('/data-adjusted', function (req, res, next) {
     const data = esp.getData();
-    const config = espConfig.getConfig();
+
     const result = {};
 
     function normalize(min, max) {
@@ -33,7 +33,8 @@ router.get('/data-adjusted', function (req, res, next) {
     }
 
     Object.keys(data).forEach(esp => {
-        const norm = normalize(config[esp].min_value, config[esp].max_value)
+        const config = espConfig.getConfig(esp);
+        const norm = normalize(config.min_value, config.max_value)
         result[esp] = data[esp].map(d => {
             return {
                 t: d.t,
