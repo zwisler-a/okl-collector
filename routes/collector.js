@@ -13,7 +13,7 @@ router.post('/:name', basicAuthMiddleware, function (req, res, next) {
         return res.status(400).send();
     }
     esp.addData(name, value);
-    res.status(200).send(espConfig.getConfig(name));
+    res.status(200).send(espConfig.mapConfigToEspResponse(espConfig.getConfig(name)));
 });
 
 router.get('/data', function (req, res, next) {

@@ -28,9 +28,9 @@ module.exports = {
     getConfig: (espName) => {
         if (!espName) return config;
         if (config[espName]) {
-            return mapConfigToEspResponse(config[espName]);
+            return config[espName];
         } else {
-            return mapConfigToEspResponse(createConfig(espName));
+            return createConfig(espName);
         }
     },
 
